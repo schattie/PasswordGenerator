@@ -1,4 +1,3 @@
-from typing_extensions import Self
 
 class PasswordGenerator:
     password = ""
@@ -7,13 +6,13 @@ class PasswordGenerator:
     numbers = False
 
     def generate_password():
-        if(Self.numbers and Self.specialCharacters):
+        if(self.numbers and self.specialCharacters):
             #generate password with letters numbers and characters
             d
-        elif(Self.numbers):
+        elif(self.numbers):
             #generate password with numbers and letters
             d
-        elif(Self.specialCharacters):
+        elif(self.specialCharacters):
             #generate password with special characters and letter
             d
         else:
@@ -21,4 +20,4 @@ class PasswordGenerator:
             d
 
     def get_Password():
-        return Self.password
+        return self.password

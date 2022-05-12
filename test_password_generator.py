@@ -1,6 +1,6 @@
 import unittest
 import re
-from PasswordGenerator.password_generator import PasswordGenerator
+from password_generator import PasswordGenerator
 
 passwordGenerator = PasswordGenerator()
 
