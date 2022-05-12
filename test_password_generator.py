@@ -3,59 +3,47 @@ import re
 from password_generator import PasswordGenerator
 
 class PasswordGeneratorTest(unittest.TestCase):
-    passwordGenerator = PasswordGenerator()
+    password_generator = PasswordGenerator()
     regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
     def test_specialcharacter_number(self):
-        self.passwordGenerator.set_numbers(True)
-        self.passwordGenerator.set_special_characters(True)
-        self.passwordGenerator.generate_password()
-        number_result = False
-        special_character_result = False
+        self.password_generator.set_numbers(True)
+        self.password_generator.set_special_characters(True)
+        self.password_generator.generate_password()
 
-        for character in self.passwordGenerator.get_password():
-            if character.isdigit():
-                number_result = True
-                break
-
-        if(self.regex.search(self.passwordGenerator.get_password())):
-            special_character_result = True
-
-        self.assertTrue(number_result)
-        self.assertTrue(special_character_result)
+        self.assertTrue(self.number_checker())
+        self.assertTrue(self.special_character_checker())
 
     def test_number(self):
-        self.passwordGenerator.set_numbers(True)
-        self.passwordGenerator.set_special_characters(False)
-        self.passwordGenerator.generate_password()
-        number_result = False
-        special_character_result = False
+        self.password_generator.set_numbers(True)
+        self.password_generator.set_special_characters(False)
+        self.password_generator.generate_password()
 
-        for character in self.passwordGenerator.get_password():
-            if character.isdigit():
-                number_result = True
-                break
-
-        if(self.regex.search(self.passwordGenerator.get_password())):
-            special_character_result = True
-
-        self.assertTrue(number_result)
-        self.assertFalse(special_character_result)
+        self.assertTrue(self.number_checker())
+        self.assertFalse(self.special_character_checker())
         
     def test_specialcharacter(self):
-        self.passwordGenerator.set_numbers(False)
-        self.passwordGenerator.set_special_characters(True)
-        self.passwordGenerator.generate_password()
-        number_result = False
-        special_character_result = False
+        self.password_generator.set_numbers(False)
+        self.password_generator.set_special_characters(True)
+        self.password_generator.generate_password()
 
-        for character in self.passwordGenerator.get_password():
+        self.assertFalse(self.number_checker())
+        self.assertTrue(self.special_character_checker())
+
+    def number_checker(self):
+        number_result = False
+        for character in self.password_generator.get_password():
             if character.isdigit():
                 number_result = True
                 break
+        return number_result    
 
-        if(self.regex.search(self.passwordGenerator.get_password())):
+    def special_character_checker(self):
+        special_character_result = False
+
+        if(self.regex.search(self.password_generator.get_password())):
             special_character_result = True
 
-        self.assertFalse(number_result)
-        self.assertTrue(special_character_result)
+        return special_character_result
+
+
                 
