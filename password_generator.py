@@ -12,13 +12,13 @@ class PasswordGenerator:
 
     def generate_password(self):
         if(self.number_choice and self.special_characters_choice):
-            self.password = ''.join(random.choice(self.letters + self.numbers + self.symbols) for i in range(self.password_size))
+            self.password = ''.join(random.choices(self.letters + self.numbers + self.symbols, k=self.password_size))
         elif(self.number_choice):
-            self.password = ''.join(random.choice(self.letters + self.numbers) for i in range(self.password_size))
+            self.password = ''.join(random.choices(self.letters + self.numbers, k=self.password_size))
         elif(self.special_characters_choice):
-            self.password = ''.join(random.choice(self.letters + self.symbols) for i in range(self.password_size))
+            self.password = ''.join(random.choices(self.letters + self.symbols, k=self.password_size))
         else:
-            self.password = ''.join(random.choice(self.letters) for i in range(self.password_size))
+            self.password = ''.join(random.choices(self.letters, k=self.password_size))
     
     def get_password(self):
         return self.password
@@ -28,3 +28,6 @@ class PasswordGenerator:
 
     def set_numbers(self, numbers):
         self.number_choice = numbers
+
+    def set_password_size(self, password_size):
+        self.password_size = password_size
