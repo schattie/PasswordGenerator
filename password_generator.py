@@ -1,6 +1,4 @@
-import numbers
 from typing_extensions import Self
-
 
 class PasswordGenerator:
     password = ""
@@ -22,3 +20,5 @@ class PasswordGenerator:
             #generate password with only letters
             d
 
+    def get_Password():
+        return Self.password
