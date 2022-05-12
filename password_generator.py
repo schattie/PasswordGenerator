@@ -1,23 +1,23 @@
+import random
+import string
 
 class PasswordGenerator:
     password = ""
-    passwordSize = 6
+    passwordSize = 50
     specialCharacters = False
     numbers = False
+    letters = string.ascii_letters
+    numbers = string.digits
+    symbols = string.punctuation
 
-    def generate_password():
+    def generate_password(self):
         if(self.numbers and self.specialCharacters):
-            #generate password with letters numbers and characters
-            d
+            self.password = ''.join(random.choice(self.letters + self.numbers + self.symbols) for i in range(self.passwordSize))
         elif(self.numbers):
-            #generate password with numbers and letters
-            d
+            self.password = ''.join(random.choice(self.letters + self.numbers) for i in range(self.passwordSize))
         elif(self.specialCharacters):
-            #generate password with special characters and letter
-            d
+            self.password = ''.join(random.choice(self.letters + self.symbols) for i in range(self.passwordSize))
         else:
-            #generate password with only letters
-            d
-
-    def get_Password():
+            self.password = ''.join(random.choice(self.letters) for i in range(self.passwordSize))
+    def get_Password(self):
         return self.password
