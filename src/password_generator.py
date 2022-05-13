@@ -3,7 +3,7 @@ import string
 
 class PasswordGenerator:
     password = ""
-    password_size = 15
+    password_size = 100
     special_characters_choice = False
     number_choice = False
     letters = string.ascii_letters
